@@ -7,6 +7,7 @@ import org.jsoup.select.Elements;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api")
 public class ArticleController {
 

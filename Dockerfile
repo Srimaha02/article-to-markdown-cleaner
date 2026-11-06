@@ -1,9 +1,11 @@
-FROM maven:3.9-eclipse-temurin-17 AS build
+# Build Stage using Java 21
+FROM maven:3.9-eclipse-temurin-21 AS build
 WORKDIR /app
 COPY . .
 RUN mvn clean package -DskipTests
 
-FROM eclipse-temurin:17-jre
+# Run Stage using Java 21 JRE
+FROM eclipse-temurin:21-jre
 WORKDIR /app
 COPY --from=build /app/target/*.jar app.jar
 EXPOSE 8080
